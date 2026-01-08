@@ -7,13 +7,10 @@ import CaseStudies from '@/components/CaseStudies'
 import Testimonials from '@/components/Testimonials'
 import OurTeam from '@/components/OurTeam'
 import Blogs from '@/components/Blogs'
-import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
       <HeroSection />
       <AboutSection />
       <ServicesSection />
@@ -23,8 +20,8 @@ export default function Home() {
       <Testimonials />
       <OurTeam />
       <Blogs />
-      <Footer />
     </main>
   )
 }
+
 

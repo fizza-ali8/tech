@@ -59,7 +59,7 @@ export default function AboutSection() {
               make a measurable impact.
             </p>
             <motion.a
-              href="#contact"
+              href="/about"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block px-6 py-3 text-white rounded-lg font-semibold transition-colors bg-gradient-to-r from-[#004B78] to-[#00A485] hover:from-[#00A485] hover:to-[#004B78]"
