@@ -7,6 +7,7 @@ import {
   Target,
   Rocket,
   HeadphonesIcon,
+  Zap,
 } from 'lucide-react'
 
 export default function BestITSolutions() {
@@ -36,16 +37,110 @@ export default function BestITSolutions() {
       title: 'End-to-End Support',
       description: 'From planning to deployment and maintenance.',
     },
+    {
+      icon: Zap,
+      title: 'High Performance & Speed',
+      description: 'Optimized systems built for speed, stability, and peak performance.',
+    },
   ]
 
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 text-white relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #004B78 0%, #00A485 100%)' }}>
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+      {/* Gradient Orbs - Option B */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Top Left Orb - Teal */}
+        <motion.div
+          className="absolute -top-40 -left-40 w-96 h-96 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 164, 133, 0.4) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, 20, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        
+        {/* Top Right Orb - Blue */}
+        <motion.div
+          className="absolute -top-40 -right-40 w-96 h-96 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 75, 120, 0.4) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 30, 0],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        
+        {/* Bottom Left Orb - Purple */}
+        <motion.div
+          className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{
+            x: [0, 25, 0],
+            y: [0, -25, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        
+        {/* Bottom Right Orb - Teal/Blue Mix */}
+        <motion.div
+          className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 164, 133, 0.35) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{
+            x: [0, -30, 0],
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
       </div>
+
+      {/* Animated Grid Pattern - Option A */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          opacity: 0.06,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+        animate={{
+          backgroundPosition: ['0% 0%', '100% 100%'],
+        }}
+        transition={{
+          duration: 60,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
