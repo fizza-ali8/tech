@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Target, Zap, Heart } from 'lucide-react'
+import { Target, Zap, Heart, Shield } from 'lucide-react'
 
 export default function AboutSection() {
   const features = [
@@ -19,6 +19,11 @@ export default function AboutSection() {
       icon: Heart,
       title: 'Responsiveness',
       description: 'Dedicated support when you need it most',
+    },
+    {
+      icon: Shield,
+      title: 'Reliability',
+      description: 'Trusted solutions built for long-term success',
     },
   ]
 

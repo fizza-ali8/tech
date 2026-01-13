@@ -14,6 +14,7 @@ import {
   Users,
   Lock,
   GaugeCircle,
+  Settings,
 } from 'lucide-react'
 
 
@@ -56,6 +57,12 @@ export default function AboutPage() {
       description:
         'UI/UX that turns ideas into intuitive, engaging products.',
     },
+    {
+      icon: Settings,
+      title: 'Cloud & DevOps',
+      description:
+        'Scalable infrastructure and automated workflows for modern businesses.',
+    },
   ]
 
   const reasons = [
@@ -64,6 +71,7 @@ export default function AboutPage() {
     { icon: Lock, title: 'Scalable & Secure Systems', description: 'Built for growth and long-term reliability.' },
     { icon: Award, title: 'Experienced Team', description: 'Skilled developers, designers, and strategists.' },
     { icon: GaugeCircle, title: 'Proven Track Record', description: 'Delivered projects across multiple industries.' },
+    { icon: Shield, title: 'Dedicated Support', description: 'Ongoing maintenance and support to ensure your success.' },
   ]
 
   return (

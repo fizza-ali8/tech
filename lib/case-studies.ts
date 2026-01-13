@@ -222,7 +222,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'enterprise-hr-management-system',
     title: 'Enterprise HR Management System',
-    category: ['software-development', 'cloud-devops'],
+    category: ['web-development', 'cloud-devops'],
     tagline: 'A scalable internal system',
     shortDescription:
       'A scalable internal system to manage HR operations, performance, and employee data securely.',

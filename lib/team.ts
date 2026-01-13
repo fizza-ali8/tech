@@ -159,12 +159,17 @@ export const teamValues: TeamValue[] = [
   {
     title: 'Collaboration',
     description: 'We believe the best solutions are built together.',
-    icon: 'Handshake',
+    icon: 'UserPlus',
   },
   {
     title: 'Continuous Learning',
     description: 'Our team stays ahead through learning and experimentation.',
     icon: 'GraduationCap',
+  },
+  {
+    title: 'Transparency',
+    description: 'Open communication and honest feedback in everything we do.',
+    icon: 'Eye',
   },
 ]
 

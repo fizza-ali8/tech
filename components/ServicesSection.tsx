@@ -31,7 +31,7 @@ export default function ServicesSection() {
     },
     {
       icon: Brain,
-      title: 'AI Automation (Workflow & Custom Rag Chatbots)',
+      title: 'AI Automation',
       description:
         'Intelligent AI-powered systems that automate tasks, analyze data, and enhance decision-making for smarter business operations.',
       color: 'from-purple-500 to-purple-600',

@@ -176,6 +176,11 @@ export const services: Service[] = [
           description:
             'Continuous monitoring and updates to keep your website running smoothly.',
         },
+        {
+          title: 'Content Management Systems',
+          description:
+            'Easy-to-use CMS solutions for seamless content updates and management.',
+        },
       ],
     },
     mainDescription:
@@ -277,6 +282,11 @@ export const services: Service[] = [
           title: 'AI Consultation & Strategy',
           description:
             'Tailored AI solutions aligned with your business goals.',
+        },
+        {
+          title: 'Model Training & Fine-Tuning',
+          description:
+            'Custom model training and fine-tuning for domain-specific applications.',
         },
       ],
     },
@@ -382,6 +392,11 @@ export const services: Service[] = [
           description:
             'Seamless connection with third-party tools and systems.',
         },
+        {
+          title: 'App Store Optimization',
+          description:
+            'Maximize app visibility and downloads through strategic ASO techniques.',
+        },
       ],
     },
     mainDescription:
@@ -484,6 +499,11 @@ export const services: Service[] = [
           title: 'Collaboration & Iteration',
           description:
             'Continuous feedback and refinement to meet user needs.',
+        },
+        {
+          title: 'Usability Testing & Research',
+          description:
+            'Data-driven design decisions through user testing and research.',
         },
       ],
     },
@@ -588,6 +608,11 @@ export const services: Service[] = [
           description:
             'Tailored visuals for storytelling and branding.',
         },
+        {
+          title: 'Brand Guidelines & Style Guides',
+          description:
+            'Comprehensive brand documentation to maintain consistency across all touchpoints.',
+        },
       ],
     },
     mainDescription:
@@ -690,6 +715,11 @@ export const services: Service[] = [
           title: 'Link Building & Off-Page SEO',
           description:
             'Boosting authority through high-quality backlinks and partnerships.',
+        },
+        {
+          title: 'Local SEO & Google Business',
+          description:
+            'Optimize for local search and improve visibility in your area.',
         },
       ],
     },
@@ -794,6 +824,11 @@ export const services: Service[] = [
           description:
             'Protect your infrastructure with industry best practices.',
         },
+        {
+          title: 'Cloud Cost Optimization',
+          description:
+            'Reduce cloud spending while maintaining performance and scalability.',
+        },
       ],
     },
     mainDescription:
@@ -896,6 +931,11 @@ export const services: Service[] = [
           title: 'DevOps Consulting & Strategy',
           description:
             'Tailored DevOps solutions aligned with your development goals.',
+        },
+        {
+          title: 'Performance Monitoring & Analytics',
+          description:
+            'Real-time monitoring and analytics to ensure optimal system performance.',
         },
       ],
     },

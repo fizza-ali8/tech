@@ -9,8 +9,9 @@ import {
   Lightbulb,
   Users,
   Award,
-  Handshake,
+  UserPlus,
   GraduationCap,
+  Eye,
   LucideIcon,
 } from 'lucide-react'
 import { leadershipTeam, coreTeam, teamValues } from '@/lib/team'
@@ -28,8 +29,9 @@ const iconMap: Record<string, LucideIcon> = {
   Lightbulb,
   Users,
   Award,
-  Handshake,
+  UserPlus,
   GraduationCap,
+  Eye,
 }
 
 export default function TeamPage() {
