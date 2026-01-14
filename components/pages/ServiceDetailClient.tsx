@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, ChevronLeft, CheckCircle } from 'lucide-react'
 import type { Service } from '@/lib/services'
 import FAQAccordion from '@/components/services/FAQAccordion'
+import { getServiceMedia } from '@/lib/media'
 
 const sectionFade = {
   initial: { opacity: 0, y: 30 },
@@ -14,20 +15,45 @@ const sectionFade = {
 }
 
 export default function ServiceDetailClient({ service }: { service: Service }) {
+  const media = getServiceMedia(service.slug)
+
   return (
     <main>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#004B78] to-[#00A485] text-white">
-        <div className="absolute inset-0 opacity-20">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M46 44v-8h-4v8h-8v4h8v8h4v-8h8v-4h-8zM46 8V0h-4v8h-8v4h8v8h4V12h8V8h-8zM8 44v-8H4v8H0v4h4v8h4v-8h8v-4H8zM8 8V0H4v8H0v4h4v8h4V12h8V8H8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#004B78] to-[#00A485] text-white min-h-[60vh] flex items-center">
+        {/* Video Background */}
+        {media?.animation && (
+          <div className="absolute inset-0 w-full h-full z-0">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ objectFit: 'cover' }}
+            >
+              <source src={media.animation} type="video/mp4" />
+            </video>
+            {/* Overlay to dull the video and make text prominent */}
+            <div className="absolute inset-0 bg-black/40 z-10"></div>
+            {/* Additional gradient overlay for better text visibility */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#004B78]/50 to-[#00A485]/50 z-10"></div>
+          </div>
+        )}
+        
+        {/* Fallback Pattern Background */}
+        {!media?.animation && (
+          <div className="absolute inset-0 opacity-20">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M46 44v-8h-4v8h-8v4h8v8h4v-8h8v-4h-8zM46 8V0h-4v8h-8v4h8v8h4V12h8V8h-8zM8 44v-8H4v8H0v4h4v8h4v-8h8v-4H8zM8 8V0H4v8H0v4h4v8h4V12h8V8H8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              }}
+            />
+          </div>
+        )}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors text-sm font-medium"

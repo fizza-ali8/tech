@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import {
   Code,
   Globe,
@@ -13,16 +14,19 @@ import {
   Cloud,
   Settings,
 } from 'lucide-react'
+import { getServiceMedia } from '@/lib/media'
 
 export default function ServicesSection() {
   const [isPaused, setIsPaused] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [displayIndex, setDisplayIndex] = useState(0) // For seamless visual position
+  const [isResetting, setIsResetting] = useState(false)
 
   const services = [
     {
       icon: Code,
       title: 'Software Development',
+      slug: 'software-development',
       description:
         'Custom software solutions designed to optimize business processes, improve efficiency, and drive measurable results.',
       color: 'from-[#004B78] to-[#00A485]',
@@ -32,6 +36,7 @@ export default function ServicesSection() {
     {
       icon: Globe,
       title: 'Web Development',
+      slug: 'web-development',
       description:
         'Modern, responsive, and high-performance websites styled according to your brand and audience, ensuring growth and engagement.',
       color: 'from-green-500 to-green-600',
@@ -41,6 +46,7 @@ export default function ServicesSection() {
     {
       icon: Brain,
       title: 'AI Automation',
+      slug: 'ai-automation',
       description:
         'Intelligent AI-powered systems that automate tasks, analyze data, and enhance decision-making for smarter business operations.',
       color: 'from-purple-500 to-purple-600',
@@ -50,6 +56,7 @@ export default function ServicesSection() {
     {
       icon: Smartphone,
       title: 'App Development',
+      slug: 'app-development',
       description:
         'User-friendly mobile applications built for performance, scalability, and seamless experiences across platforms.',
       color: 'from-pink-500 to-pink-600',
@@ -59,6 +66,7 @@ export default function ServicesSection() {
     {
       icon: Palette,
       title: 'UI/UX Design',
+      slug: 'ui-ux-design',
       description:
         'Intuitive UI/UX designs focused on usability, engagement, and turning ideas into impactful digital products.',
       color: 'from-orange-500 to-orange-600',
@@ -68,6 +76,7 @@ export default function ServicesSection() {
     {
       icon: ImageIcon,
       title: 'Graphic Design',
+      slug: 'graphic-design',
       description:
         'Creative branding and visual design solutions including logos, brand identity, and marketing material that help your business stand out and leave a lasting impression.',
       color: 'from-red-500 to-red-600',
@@ -77,6 +86,7 @@ export default function ServicesSection() {
     {
       icon: Search,
       title: 'SEO Optimization',
+      slug: 'seo-optimization',
       description:
         'Data-driven SEO strategies to increase search visibility, attract qualified traffic, and convert visitors into loyal customers, boosting your online presence.',
       color: 'from-yellow-500 to-yellow-600',
@@ -86,6 +96,7 @@ export default function ServicesSection() {
     {
       icon: Cloud,
       title: 'Cloud Services',
+      slug: 'cloud-services',
       description:
         'Scalable and secure cloud solutions that enable seamless infrastructure management, improved performance, and cost-efficient growth for your business.',
       color: 'from-cyan-500 to-cyan-600',
@@ -95,6 +106,7 @@ export default function ServicesSection() {
     {
       icon: Settings,
       title: 'DevOps',
+      slug: 'devops',
       description:
         'End-to-end DevOps solutions that streamline development, automate deployments, and ensure faster, more reliable software delivery.',
       color: 'from-indigo-500 to-indigo-600',
@@ -117,9 +129,14 @@ export default function ServicesSection() {
       })
       setDisplayIndex((prev) => {
         // Keep incrementing for visual position (never resets, uses duplicated services)
-        // When we reach end of second set, reset to start of second set seamlessly
-        if (prev >= services.length * 2 - 4) {
-          return services.length // Reset to start of second set (seamless)
+        // Reset when we're safely in the middle of the second set
+        // This ensures the reset happens when the visible cards are identical
+        const resetThreshold = services.length + 2 // Reset after showing 2 cards from second set
+        if (prev >= resetThreshold) {
+          // Reset to start of second set - this position looks identical to start of first set
+          setIsResetting(true)
+          setTimeout(() => setIsResetting(false), 50) // Reset flag after transition
+          return services.length
         }
         return prev + 1
       })
@@ -187,7 +204,7 @@ export default function ServicesSection() {
                 x: `${translateX}%`,
               }}
               transition={{
-                duration: 0.8,
+                duration: isResetting ? 0 : 0.8,
                 ease: 'easeInOut',
               }}
             >
@@ -197,15 +214,32 @@ export default function ServicesSection() {
                   className="flex-shrink-0 w-[calc(100vw-2rem)] md:w-[calc((100%-4.5rem)/4)]"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group h-full flex flex-col overflow-hidden">
+                  <Link href={`/services/${service.slug}`} className="block h-full">
+                    <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group h-full flex flex-col overflow-hidden cursor-pointer">
                     {/* Image Section */}
                     <div
                       className={`relative h-48 bg-gradient-to-br ${service.gradient} overflow-hidden`}
                     >
-                      <div className="absolute inset-0 bg-black/10" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-8xl opacity-30">{service.image}</div>
-                      </div>
+                      {(() => {
+                        const media = getServiceMedia(service.slug)
+                        return media?.image ? (
+                          <>
+                            <img
+                              src={media.image}
+                              alt={service.title}
+                              className="absolute inset-0 w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-black/20" />
+                          </>
+                        ) : (
+                          <>
+                            <div className="absolute inset-0 bg-black/10" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="text-8xl opacity-30">{service.image}</div>
+                            </div>
+                          </>
+                        )
+                      })()}
                       <div className="absolute top-4 right-4">
                         <div
                           className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform`}
@@ -224,7 +258,8 @@ export default function ServicesSection() {
                         {service.description}
                       </p>
                     </div>
-                  </div>
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </motion.div>

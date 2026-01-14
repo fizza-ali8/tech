@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,16 +50,24 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-4 lg:space-x-8">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                whileHover={{ y: -2 }}
-                className="text-sm lg:text-base text-gray-700 hover:text-[#00A485] transition-colors font-medium"
-              >
-                {link.name}
-              </motion.a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || 
+                (link.href === '/services' && pathname?.startsWith('/services'))
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  whileHover={{ y: -2 }}
+                  className={`text-sm lg:text-base transition-colors font-medium ${
+                    isActive
+                      ? 'text-[#00A485]'
+                      : 'text-gray-700 hover:text-[#00A485]'
+                  }`}
+                >
+                  {link.name}
+                </motion.a>
+              )
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -79,16 +89,24 @@ export default function Navbar() {
           className="md:hidden bg-white border-t"
         >
           <div className="px-4 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-gray-700 hover:text-[#00A485] transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || 
+                (link.href === '/services' && pathname?.startsWith('/services'))
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block transition-colors ${
+                    isActive
+                      ? 'text-[#00A485] font-semibold'
+                      : 'text-gray-700 hover:text-[#00A485]'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              )
+            })}
           </div>
         </motion.div>
       )}

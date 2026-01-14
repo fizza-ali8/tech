@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { Service } from '@/lib/services'
 import { ServiceIcon } from '@/components/services/ServiceIcon'
+import { getServiceMedia } from '@/lib/media'
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -72,17 +73,40 @@ export default function ServicesPageClient({ services }: { services: Service[] }
                 whileHover={{ y: -10, scale: 1.02 }}
                 className="group bg-white border border-gray-100 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
               >
-                <div className="p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center">
-                      <ServiceIcon slug={s.slug} className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                {(() => {
+                  const media = getServiceMedia(s.slug)
+                  return media?.image ? (
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={media.image}
+                        alt={s.title}
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      <div className="absolute bottom-4 left-4">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center shadow-lg">
+                          <ServiceIcon slug={s.slug} className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                        </div>
+                      </div>
                     </div>
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 text-[#004B78]">
-                      Aurora Nexus
-                    </span>
-                  </div>
+                  ) : null
+                })()}
+                <div className="p-6 sm:p-7">
+                  {(() => {
+                    const media = getServiceMedia(s.slug)
+                    if (!media?.image) {
+                      return (
+                        <div className="flex items-start justify-between gap-4 mb-5">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center">
+                            <ServiceIcon slug={s.slug} className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                          </div>
+                        </div>
+                      )
+                    }
+                    return null
+                  })()}
 
-                  <h3 className="mt-5 text-lg sm:text-xl font-bold text-gray-900">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                     {s.title}
                   </h3>
                   <p className="mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">

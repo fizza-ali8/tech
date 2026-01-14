@@ -118,8 +118,26 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-white to-primary-100/50"
     >
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectFit: 'cover' }}
+        >
+          <source src="/media/home_hero.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay to dull the video and make text prominent */}
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
+        {/* Additional gradient overlay for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-50/60 via-white/50 to-primary-100/40 z-10"></div>
+      </div>
+
       {/* Animated Background Orbs */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-20">
         <motion.div
           className="absolute top-20 left-10 w-64 h-64 md:w-96 md:h-96 rounded-full mix-blend-multiply filter blur-xl opacity-20"
           style={{ backgroundColor: '#00A485' }}
@@ -166,7 +184,7 @@ export default function HeroSection() {
 
       {/* Lottie Tech Animation - Behind Content */}
       {animationData && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-25">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 opacity-25">
           <div className="w-full h-full max-w-5xl mx-auto">
             <Lottie
               animationData={animationData}
@@ -179,7 +197,7 @@ export default function HeroSection() {
       )}
 
       {/* Fallback Tech Visualization - Animated System Architecture */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
         <div className="relative w-full h-full max-w-5xl mx-auto">
           {/* Animated Tech System */}
           <motion.div
@@ -310,7 +328,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -414,7 +432,7 @@ export default function HeroSection() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block z-10"
+        className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 hidden sm:block z-30"
         animate={{
           y: [0, 10, 0],
           opacity: [0.5, 1, 0.5],
