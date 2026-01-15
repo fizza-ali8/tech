@@ -20,6 +20,8 @@ export type BlogPost = {
   readTime: string
   featured?: boolean
   image?: string
+  cardImage?: string // Image for blog card on listing page
+  blogImage?: string // Image for blog post content page
   // Individual post content
   content?: {
     introduction: string
@@ -27,6 +29,7 @@ export type BlogPost = {
       heading: string
       content: string
       bullets?: string[]
+      imageAfter?: boolean // If true, show blogImage after this section
     }[]
     conclusion: string
   }
@@ -43,6 +46,8 @@ export const blogPosts: BlogPost[] = [
     author: 'Aurora Nexus Team',
     readTime: '8 min read',
     featured: true,
+    cardImage: '/media/blogs/AI Automation Transforming Business Operations_card.jpg',
+    blogImage: '/media/blogs/AI Automation is Transforming Business Operations_blog.jpg',
     content: {
       introduction:
         'Artificial Intelligence is no longer a futuristic concept—it\'s a present-day reality transforming how businesses operate. From automating repetitive tasks to enabling data-driven decisions, AI automation is revolutionizing industries across the globe.',
@@ -69,6 +74,7 @@ export const blogPosts: BlogPost[] = [
             'Enhanced customer experience',
             'Scalability without proportional cost increase',
           ],
+          imageAfter: true, // Show blogImage after this section
         },
         {
           heading: 'Real-World Applications',
@@ -101,6 +107,8 @@ export const blogPosts: BlogPost[] = [
     date: '2025-01-03',
     author: 'Aurora Nexus Team',
     readTime: '7 min read',
+    cardImage: '/media/blogs/Scalable Cloud Infrastructure_card.jpg',
+    blogImage: '/media/blogs/Scalable Cloud Infrastructure_blog.jpg',
     content: {
       introduction:
         'As businesses grow, their infrastructure needs evolve. Cloud computing offers the flexibility and scalability that modern organizations need to adapt quickly and compete effectively.',
@@ -115,6 +123,7 @@ export const blogPosts: BlogPost[] = [
             'Access to enterprise-grade security',
             'Global availability and redundancy',
           ],
+          imageAfter: true, // Show blogImage after this section
         },
         {
           heading: 'Choosing the Right Cloud Platform',
@@ -136,307 +145,6 @@ export const blogPosts: BlogPost[] = [
       ],
       conclusion:
         'Cloud infrastructure is the foundation for digital transformation. By adopting cloud-native practices, businesses can achieve the agility and scalability needed to thrive in today\'s competitive landscape.',
-    },
-  },
-  {
-    slug: 'devops-best-practices-accelerate-delivery',
-    title: 'DevOps Best Practices to Accelerate Your Product Delivery',
-    category: 'devops-infrastructure',
-    excerpt:
-      'A practical guide to CI/CD pipelines, automation, and faster release cycles for modern development teams.',
-    date: '2024-12-28',
-    author: 'Aurora Nexus Team',
-    readTime: '6 min read',
-    content: {
-      introduction:
-        'DevOps has transformed how software is built and delivered. By breaking down silos between development and operations, teams can ship features faster, more reliably, and with higher quality.',
-      sections: [
-        {
-          heading: 'What is DevOps?',
-          content:
-            'DevOps is a set of practices that combines software development (Dev) and IT operations (Ops). It aims to shorten the development lifecycle while delivering features, fixes, and updates frequently.',
-        },
-        {
-          heading: 'Essential DevOps Practices',
-          content:
-            'Successful DevOps implementation includes several key practices:',
-          bullets: [
-            'Continuous Integration (CI) - Automatically build and test code',
-            'Continuous Deployment (CD) - Automate releases to production',
-            'Infrastructure as Code - Version control for infrastructure',
-            'Monitoring and Logging - Real-time visibility into systems',
-            'Collaboration and Communication - Break down team silos',
-          ],
-        },
-        {
-          heading: 'Tools for DevOps Success',
-          content:
-            'The right tools are essential for DevOps implementation:',
-          bullets: [
-            'Jenkins, GitHub Actions for CI/CD',
-            'Docker, Kubernetes for containerization',
-            'Terraform, CloudFormation for IaC',
-            'Prometheus, Grafana for monitoring',
-          ],
-        },
-      ],
-      conclusion:
-        'DevOps is not just about tools—it\'s a cultural shift that enables faster, more reliable software delivery. Start small, iterate, and continuously improve your processes.',
-    },
-  },
-  {
-    slug: 'why-ui-ux-design-critical-product-success',
-    title: 'Why UI/UX Design is Critical for Product Success',
-    category: 'ui-ux-design',
-    excerpt:
-      'Understand how user-centered design improves engagement, conversions, and overall product success.',
-    date: '2024-12-25',
-    author: 'Aurora Nexus Team',
-    readTime: '5 min read',
-    content: {
-      introduction:
-        'In today\'s competitive digital landscape, great functionality alone isn\'t enough. Users expect intuitive, enjoyable experiences that make their lives easier.',
-      sections: [
-        {
-          heading: 'The Difference Between UI and UX',
-          content:
-            'UI (User Interface) focuses on the visual elements—colors, typography, buttons, and layouts. UX (User Experience) encompasses the entire journey—how users feel when interacting with your product.',
-        },
-        {
-          heading: 'Impact on Business Metrics',
-          content:
-            'Good design directly affects your bottom line:',
-          bullets: [
-            'Higher conversion rates',
-            'Reduced bounce rates',
-            'Increased user retention',
-            'Lower support costs',
-            'Stronger brand perception',
-          ],
-        },
-        {
-          heading: 'Key Principles of Great Design',
-          content:
-            'Follow these principles for effective UI/UX:',
-          bullets: [
-            'Simplicity - Remove unnecessary complexity',
-            'Consistency - Maintain uniform patterns',
-            'Feedback - Respond to user actions',
-            'Accessibility - Design for all users',
-            'User-centered - Base decisions on user research',
-          ],
-        },
-      ],
-      conclusion:
-        'Investing in UI/UX design is investing in your product\'s success. Great design creates happy users, and happy users drive business growth.',
-    },
-  },
-  {
-    slug: 'seo-strategies-that-actually-work',
-    title: 'SEO Strategies That Actually Work in Competitive Markets',
-    category: 'seo-marketing',
-    excerpt:
-      'Data-driven techniques to improve rankings and attract qualified traffic to your website.',
-    date: '2024-12-20',
-    author: 'Aurora Nexus Team',
-    readTime: '7 min read',
-    content: {
-      introduction:
-        'Search engine optimization remains one of the most effective ways to drive organic traffic. But with constantly changing algorithms, what strategies actually work in 2025?',
-      sections: [
-        {
-          heading: 'Technical SEO Foundation',
-          content:
-            'Before focusing on content, ensure your technical foundation is solid:',
-          bullets: [
-            'Fast page load speeds',
-            'Mobile-friendly design',
-            'Proper URL structure',
-            'XML sitemaps and robots.txt',
-            'HTTPS security',
-          ],
-        },
-        {
-          heading: 'Content That Ranks',
-          content:
-            'Quality content is the cornerstone of SEO success:',
-          bullets: [
-            'Answer user questions comprehensively',
-            'Use proper heading hierarchy',
-            'Include relevant keywords naturally',
-            'Update content regularly',
-            'Create linkable assets',
-          ],
-        },
-        {
-          heading: 'Building Authority',
-          content:
-            'Off-page SEO builds your site\'s authority:',
-          bullets: [
-            'Earn high-quality backlinks',
-            'Build brand mentions',
-            'Engage on social media',
-            'Create shareable content',
-          ],
-        },
-      ],
-      conclusion:
-        'SEO is a long-term investment that compounds over time. Focus on providing value to users, and the rankings will follow.',
-    },
-  },
-  {
-    slug: 'idea-to-app-mobile-development-journey',
-    title: 'From Idea to App: The Complete Mobile App Development Journey',
-    category: 'app-development',
-    excerpt:
-      'A step-by-step overview of building successful mobile applications from concept to launch.',
-    date: '2024-12-15',
-    author: 'Aurora Nexus Team',
-    readTime: '8 min read',
-    content: {
-      introduction:
-        'Building a mobile app is an exciting journey, but it requires careful planning and execution. This guide walks you through each stage of the development process.',
-      sections: [
-        {
-          heading: 'Ideation and Validation',
-          content:
-            'Before writing any code, validate your idea:',
-          bullets: [
-            'Define the problem you\'re solving',
-            'Research your target audience',
-            'Analyze competitors',
-            'Create a minimum viable product (MVP) plan',
-          ],
-        },
-        {
-          heading: 'Design and Prototyping',
-          content:
-            'Design is crucial for user adoption:',
-          bullets: [
-            'Create user personas',
-            'Map user journeys',
-            'Design wireframes',
-            'Build interactive prototypes',
-            'Test with real users',
-          ],
-        },
-        {
-          heading: 'Development and Testing',
-          content:
-            'The development phase brings your app to life:',
-          bullets: [
-            'Choose the right technology stack',
-            'Develop in iterative sprints',
-            'Implement continuous testing',
-            'Optimize performance',
-          ],
-        },
-        {
-          heading: 'Launch and Growth',
-          content:
-            'Launching is just the beginning:',
-          bullets: [
-            'Prepare app store assets',
-            'Plan your launch marketing',
-            'Monitor user feedback',
-            'Iterate based on data',
-          ],
-        },
-      ],
-      conclusion:
-        'Building a successful app requires patience, iteration, and a focus on user needs. Start with a clear vision, stay flexible, and keep improving.',
-    },
-  },
-  {
-    slug: 'ai-chatbots-redefining-customer-support',
-    title: 'How AI Chatbots are Redefining Customer Support',
-    category: 'ai-automation',
-    excerpt:
-      'Explore how intelligent chatbots enhance customer experience and reduce support workload.',
-    date: '2024-12-10',
-    author: 'Aurora Nexus Team',
-    readTime: '6 min read',
-    content: {
-      introduction:
-        'Customer expectations are higher than ever. AI chatbots offer a way to provide instant, 24/7 support while freeing up human agents for complex issues.',
-      sections: [
-        {
-          heading: 'The Evolution of Chatbots',
-          content:
-            'Modern AI chatbots are vastly different from early rule-based systems. Powered by natural language processing and machine learning, they can understand context, learn from interactions, and provide human-like responses.',
-        },
-        {
-          heading: 'Benefits of AI Chatbots',
-          content:
-            'Organizations implementing AI chatbots see multiple benefits:',
-          bullets: [
-            'Instant responses 24/7',
-            'Reduced support costs',
-            'Consistent service quality',
-            'Scalability during peak times',
-            'Valuable customer insights',
-          ],
-        },
-        {
-          heading: 'RAG-Powered Chatbots',
-          content:
-            'Retrieval-Augmented Generation (RAG) chatbots combine the power of large language models with your company\'s knowledge base. This ensures accurate, relevant responses grounded in your specific data.',
-        },
-      ],
-      conclusion:
-        'AI chatbots are not replacing human support—they\'re augmenting it. By handling routine queries, they allow human agents to focus on complex issues that require empathy and expertise.',
-    },
-  },
-  {
-    slug: 'web-app-vs-mobile-app-what-to-build',
-    title: 'Web App vs Mobile App – What Should You Build?',
-    category: 'web-development',
-    excerpt:
-      'A comprehensive comparison to help you decide the right platform for your digital product.',
-    date: '2024-12-05',
-    author: 'Aurora Nexus Team',
-    readTime: '6 min read',
-    content: {
-      introduction:
-        'One of the most common questions we hear from clients is whether they should build a web app or a mobile app. The answer depends on your specific needs, audience, and goals.',
-      sections: [
-        {
-          heading: 'Understanding the Options',
-          content:
-            'Web apps run in browsers and are accessible from any device. Mobile apps are installed on smartphones and can leverage device features like cameras, GPS, and push notifications.',
-        },
-        {
-          heading: 'When to Choose a Web App',
-          content:
-            'Web apps are ideal when:',
-          bullets: [
-            'You need broad accessibility',
-            'Budget is limited',
-            'Content is frequently updated',
-            'SEO is important',
-            'Users don\'t need offline access',
-          ],
-        },
-        {
-          heading: 'When to Choose a Mobile App',
-          content:
-            'Mobile apps excel when:',
-          bullets: [
-            'You need device features (camera, GPS)',
-            'Offline functionality is required',
-            'Push notifications are important',
-            'Performance is critical',
-            'You want presence in app stores',
-          ],
-        },
-        {
-          heading: 'The Hybrid Approach',
-          content:
-            'Progressive Web Apps (PWAs) and cross-platform frameworks offer a middle ground, providing app-like experiences while maintaining web accessibility.',
-        },
-      ],
-      conclusion:
-        'There\'s no one-size-fits-all answer. Consider your users, features, and business goals to make the right choice—or consider building both.',
     },
   },
 ]

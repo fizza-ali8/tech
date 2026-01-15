@@ -19,123 +19,70 @@ export type TeamValue = {
 
 export const leadershipTeam: TeamMember[] = [
   {
-    name: 'Alex Robertson',
-    role: 'Founder & CEO',
-    expertise: 'Visionary leader with expertise in digital transformation, AI strategy, and business growth.',
+    name: 'Umair Sultan',
+    role: 'Principal Director | Group CEO',
+    expertise: 'Strategic leadership and business growth with expertise in digital transformation.',
     isLeadership: true,
     social: {
       linkedin: '#',
-      email: 'alex@auroranexus.com',
+      email: 'umair@auroranexus.io',
     },
   },
   {
-    name: 'Sophia Bennett',
-    role: 'Chief Technology Officer (CTO)',
-    expertise: 'Expert in scalable architectures, cloud solutions, and enterprise systems.',
+    name: 'Faisal Ismail',
+    role: 'Operations Manager',
+    expertise: 'Operations and process management with focus on efficiency and growth.',
     isLeadership: true,
     social: {
       linkedin: '#',
-      email: 'sophia@auroranexus.com',
-    },
-  },
-  {
-    name: 'Daniel Hughes',
-    role: 'Head of Engineering',
-    expertise: 'Leads software, web, and mobile teams with a focus on performance, security, and scalability.',
-    isLeadership: true,
-    social: {
-      linkedin: '#',
-      email: 'daniel@auroranexus.com',
-    },
-  },
-  {
-    name: 'Emily Carter',
-    role: 'Head of Design (UI/UX)',
-    expertise: 'Crafts intuitive, user-centered experiences across web and mobile platforms.',
-    isLeadership: true,
-    social: {
-      linkedin: '#',
-      email: 'emily@auroranexus.com',
+      email: 'faisal@auroranexus.io',
     },
   },
 ]
 
 export const coreTeam: TeamMember[] = [
   {
-    name: 'Liam Johnson',
-    role: 'Senior Software Engineer',
-    expertise: 'Specialist in custom applications, integrations, and backend systems.',
+    name: 'Hassaan Ur Rasheed',
+    role: 'AI Engineer | Backend Developer',
+    expertise: 'Expert in AI solutions, RAG chatbots, machine learning models, and backend development.',
     social: {
       linkedin: '#',
       github: '#',
     },
   },
   {
-    name: 'Aisha Khan',
-    role: 'AI & Automation Engineer',
-    expertise: 'Expert in RAG chatbots, machine learning models, and intelligent workflows.',
+    name: 'Fizza Ali',
+    role: 'Frontend Developer',
+    expertise: 'Creates modern, responsive user interfaces and frontend experiences.',
     social: {
       linkedin: '#',
       github: '#',
     },
   },
   {
-    name: 'Michael Chen',
-    role: 'Cloud Architect',
-    expertise: 'Designs secure, scalable cloud infrastructure for high-growth businesses.',
+    name: 'Muhammad Aasim',
+    role: 'Business Development Associate',
+    expertise: 'Business development and client relations with focus on growth and partnerships.',
     social: {
       linkedin: '#',
+      email: 'aasim@auroranexus.io',
     },
   },
   {
-    name: 'Sarah Williams',
-    role: 'DevOps Engineer',
-    expertise: 'Automates pipelines and ensures fast, reliable software delivery.',
-    social: {
-      linkedin: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Noah Patel',
-    role: 'Full Stack Developer',
-    expertise: 'Builds modern, high-performance web applications.',
-    social: {
-      linkedin: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Olivia Martinez',
-    role: 'Mobile App Developer',
-    expertise: 'Creates seamless, user-friendly iOS & Android applications.',
-    social: {
-      linkedin: '#',
-      github: '#',
-    },
-  },
-  {
-    name: 'Emma Thompson',
-    role: 'UI/UX Designer',
-    expertise: 'Designs engaging interfaces that drive user adoption and conversions.',
-    social: {
-      linkedin: '#',
-    },
-  },
-  {
-    name: 'David Brown',
+    name: 'Syeda Wajiha Batool',
     role: 'Graphic Designer',
-    expertise: 'Creates brand identities, marketing visuals, and creative assets.',
+    expertise: 'Creates brand identities, marketing visuals, and creative design assets.',
     social: {
       linkedin: '#',
     },
   },
   {
-    name: 'Zara Ahmed',
-    role: 'SEO & Digital Marketing Specialist',
-    expertise: 'Boosts visibility, traffic, and conversions with data-driven strategies.',
+    name: 'Nimra Arshad',
+    role: 'Virtual Assistant',
+    expertise: 'Administrative support and coordination to ensure smooth operations.',
     social: {
       linkedin: '#',
+      email: 'nimra@auroranexus.io',
     },
   },
 ]

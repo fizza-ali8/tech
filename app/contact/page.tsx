@@ -272,10 +272,10 @@ export default function ContactPage() {
                         Email
                       </h5>
                       <a
-                        href="mailto:info@auroranexus.com"
+                        href="mailto:contact@auroranexus.io"
                         className="text-sm text-[#00A485] hover:underline break-all"
                       >
-                        info@auroranexus.com
+                        contact@auroranexus.io
                       </a>
                     </div>
                   </div>
@@ -289,10 +289,10 @@ export default function ContactPage() {
                         Phone
                       </h5>
                       <a
-                        href="tel:+923001234567"
+                        href="tel:+923408110022"
                         className="text-sm text-[#00A485] hover:underline"
                       >
-                        +92 300 123 4567
+                        +92 34 08 11 00 22
                       </a>
                     </div>
                   </div>
@@ -305,9 +305,10 @@ export default function ContactPage() {
                       <h5 className="text-sm font-semibold text-gray-700 mb-1">
                         Address
                       </h5>
-                      <p className="text-sm text-gray-600">
-                        Islamabad, Pakistan
-                      </p>
+                      <div className="text-sm text-gray-600">
+                        <p>Innovista Rawal, Avenue Mall, DHA-1, Rawalpindi</p>
+                        <p className="mt-1">102, MDR, Executive Block, Faisal Hills, Islamabad</p>
+                      </div>
                     </div>
                   </div>
 
@@ -322,7 +323,7 @@ export default function ContactPage() {
                       <p className="text-sm text-gray-600">
                         Monday – Friday
                         <br />
-                        9:00 AM – 6:00 PM
+                        9:00 PM – 6:00 AM PST
                       </p>
                     </div>
                   </div>
@@ -371,19 +372,59 @@ export default function ContactPage() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#004B78] to-[#00A485] mx-auto" />
           </motion.div>
-          <motion.div
-            {...sectionFade}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="rounded-2xl overflow-hidden shadow-lg border border-gray-100"
-          >
-            <div className="w-full h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-[#00A485] mx-auto mb-4" />
-                <p className="text-gray-600 font-medium">Map Location</p>
-                <p className="text-sm text-gray-500 mt-2">Islamabad, Pakistan</p>
+          
+          {/* Two Maps - Grid Layout */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {/* Rawalpindi Location */}
+            <motion.div
+              {...sectionFade}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="rounded-2xl overflow-hidden shadow-lg border border-gray-100"
+            >
+              <div className="bg-gradient-to-br from-[#004B78] to-[#00A485] p-4">
+                <h3 className="text-lg font-semibold text-white">Rawalpindi Office</h3>
+                <p className="text-sm text-white/90 mt-1">Innovista Rawal, Avenue Mall, DHA-1</p>
               </div>
-            </div>
-          </motion.div>
+              <div className="w-full h-80">
+                <iframe
+                  src="https://www.google.com/maps?q=Innovista+Rawal,+Avenue+Mall,+DHA-1,+Rawalpindi&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Aurora Nexus - Rawalpindi Office"
+                  className="w-full h-full"
+                />
+              </div>
+            </motion.div>
+
+            {/* Islamabad Location */}
+            <motion.div
+              {...sectionFade}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="rounded-2xl overflow-hidden shadow-lg border border-gray-100"
+            >
+              <div className="bg-gradient-to-br from-[#004B78] to-[#00A485] p-4">
+                <h3 className="text-lg font-semibold text-white">Islamabad Office</h3>
+                <p className="text-sm text-white/90 mt-1">102, MDR, Executive Block, Faisal Hills</p>
+              </div>
+              <div className="w-full h-80">
+                <iframe
+                  src="https://www.google.com/maps?q=102,+MDR,+Executive+Block,+Faisal+Hills,+Islamabad&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Aurora Nexus - Islamabad Office"
+                  className="w-full h-full"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
