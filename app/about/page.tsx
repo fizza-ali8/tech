@@ -1,21 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import {
   ArrowRight,
   Shield,
-  Code,
-  Brain,
-  Smartphone,
-  Palette,
-  Globe,
   Target,
   Award,
   Users,
   Lock,
   GaugeCircle,
-  Settings,
+  ChevronRight,
 } from 'lucide-react'
+import { services } from '@/lib/services'
 
 
 const sectionFade = {
@@ -26,44 +23,6 @@ const sectionFade = {
 }
 
 export default function AboutPage() {
-  const whatWeDo = [
-    {
-      icon: Code,
-      title: 'Software Development',
-      description:
-        'Custom solutions tailored for business efficiency.',
-    },
-    {
-      icon: Globe,
-      title: 'Web Development',
-      description:
-        'Modern, responsive websites that engage and convert.',
-    },
-    {
-      icon: Brain,
-      title: 'AI Solutions',
-      description:
-        'Intelligent systems to automate processes and make data-driven decisions.',
-    },
-    {
-      icon: Smartphone,
-      title: 'App Development',
-      description:
-        'Mobile apps designed for seamless user experiences.',
-    },
-    {
-      icon: Palette,
-      title: 'Digital Product Design',
-      description:
-        'UI/UX that turns ideas into intuitive, engaging products.',
-    },
-    {
-      icon: Settings,
-      title: 'Cloud & DevOps',
-      description:
-        'Scalable infrastructure and automated workflows for modern businesses.',
-    },
-  ]
 
   const reasons = [
     { icon: Users, title: 'Client-Centric Approach', description: 'Solutions designed to meet your unique needs.' },
@@ -178,26 +137,33 @@ export default function AboutPage() {
             <div className="w-24 h-1 bg-gradient-to-r from-[#004B78] to-[#00A485] mx-auto mt-4" />
           </motion.div>
 
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {whatWeDo.map((item, index) => (
-              <motion.div
-                key={item.title}
-                {...sectionFade}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="p-6 sm:p-7 rounded-2xl shadow-lg bg-white border border-gray-100 hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center mb-5">
-                  <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8">
+              <ul className="space-y-3 sm:space-y-4">
+                {services.map((service, index) => (
+                  <motion.li
+                    key={service.slug}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.05 }}
+                  >
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="flex items-center justify-between p-4 rounded-lg hover:bg-gradient-to-r hover:from-[#004B78]/5 hover:to-[#00A485]/5 transition-all duration-300 group"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#004B78] to-[#00A485] flex-shrink-0" />
+                        <span className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-[#00A485] transition-colors">
+                          {service.title}
+                        </span>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#00A485] group-hover:translate-x-1 transition-all" />
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>

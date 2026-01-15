@@ -5,7 +5,6 @@ import BestITSolutions from '@/components/BestITSolutions'
 import HowItWorks from '@/components/HowItWorks'
 import CaseStudies from '@/components/CaseStudies'
 import Testimonials from '@/components/Testimonials'
-import OurTeam from '@/components/OurTeam'
 import Blogs from '@/components/Blogs'
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
       <HowItWorks />
       <CaseStudies />
       <Testimonials />
-      <OurTeam />
       <Blogs />
     </main>
   )

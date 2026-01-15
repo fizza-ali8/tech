@@ -99,7 +99,7 @@ export default function TeamPage() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-[#004B78] to-[#00A485] mx-auto" />
           </motion.div>
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
             {leadershipTeam.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -110,10 +110,20 @@ export default function TeamPage() {
                 whileHover={{ y: -8, scale: 1.02 }}
                 className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 text-center hover:shadow-2xl transition-all duration-300"
               >
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center mx-auto mb-5">
-                  <span className="text-white text-2xl sm:text-3xl font-bold">
-                    {member.name.charAt(0)}
-                  </span>
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center mx-auto mb-5 border-2 border-gray-300">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center">
+                      <span className="text-white text-2xl sm:text-3xl font-bold">
+                        {member.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                   {member.name}
@@ -158,7 +168,7 @@ export default function TeamPage() {
             <div className="w-24 h-1 bg-gradient-to-r from-[#004B78] to-[#00A485] mx-auto" />
           </motion.div>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {coreTeam.map((member, index) => (
+            {coreTeam.slice(0, 3).map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, y: 30 }}
@@ -166,46 +176,111 @@ export default function TeamPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-7 hover:shadow-2xl transition-all duration-300"
+                className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 text-center hover:shadow-2xl transition-all duration-300"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-xl font-bold">
-                      {member.name.charAt(0)}
-                    </span>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center mx-auto mb-5 border-2 border-gray-300">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center">
+                      <span className="text-white text-2xl sm:text-3xl font-bold">
+                        {member.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                  {member.name}
+                </h3>
+                <p className="text-sm sm:text-base text-[#00A485] font-semibold mb-3">
+                  {member.role}
+                </p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  {member.expertise}
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  {member.social?.linkedin && (
+                    <a
+                      href={member.social.linkedin}
+                      className="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#00A485] flex items-center justify-center transition-colors group"
+                    >
+                      <Linkedin className="w-4 h-4 text-gray-600 group-hover:text-white" />
+                    </a>
+                  )}
+                  {member.social?.github && (
+                    <a
+                      href={member.social.github}
+                      className="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#00A485] flex items-center justify-center transition-colors group"
+                    >
+                      <Github className="w-4 h-4 text-gray-600 group-hover:text-white" />
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+            {/* Last 2 items centered */}
+            {coreTeam.length > 3 && (
+              <div className="lg:col-span-3 flex justify-center gap-6 md:gap-8 flex-wrap">
+                {coreTeam.slice(3).map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: (index + 3) * 0.08 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 text-center hover:shadow-2xl transition-all duration-300 w-full md:w-[calc(50%-1rem)] lg:w-auto lg:max-w-sm"
+                  >
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center mx-auto mb-5 border-2 border-gray-300">
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center">
+                          <span className="text-white text-2xl sm:text-3xl font-bold">
+                            {member.name.charAt(0)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
                       {member.name}
                     </h3>
-                    <p className="text-sm sm:text-base text-[#00A485] font-semibold mb-2">
+                    <p className="text-sm sm:text-base text-[#00A485] font-semibold mb-3">
                       {member.role}
                     </p>
-                    <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
                       {member.expertise}
                     </p>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center gap-3">
                       {member.social?.linkedin && (
                         <a
                           href={member.social.linkedin}
-                          className="w-7 h-7 rounded-full bg-gray-100 hover:bg-[#00A485] flex items-center justify-center transition-colors group"
+                          className="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#00A485] flex items-center justify-center transition-colors group"
                         >
-                          <Linkedin className="w-3.5 h-3.5 text-gray-600 group-hover:text-white" />
+                          <Linkedin className="w-4 h-4 text-gray-600 group-hover:text-white" />
                         </a>
                       )}
                       {member.social?.github && (
                         <a
                           href={member.social.github}
-                          className="w-7 h-7 rounded-full bg-gray-100 hover:bg-[#00A485] flex items-center justify-center transition-colors group"
+                          className="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#00A485] flex items-center justify-center transition-colors group"
                         >
-                          <Github className="w-3.5 h-3.5 text-gray-600 group-hover:text-white" />
+                          <Github className="w-4 h-4 text-gray-600 group-hover:text-white" />
                         </a>
                       )}
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
