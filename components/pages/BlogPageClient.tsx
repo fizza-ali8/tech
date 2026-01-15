@@ -102,14 +102,24 @@ export default function BlogPageClient() {
                 className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer"
               >
                 <div className="grid md:grid-cols-2 gap-0">
-                  <div className="w-full h-64 md:h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                    <div className="text-center p-6">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white text-2xl font-bold">AI</span>
-                      </div>
-                      <p className="text-sm text-gray-600">Featured Article</p>
+                  {featuredPost.cardImage ? (
+                    <div className="w-full h-64 md:h-full overflow-hidden">
+                      <img
+                        src={featuredPost.cardImage}
+                        alt={featuredPost.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                  </div>
+                  ) : (
+                    <div className="w-full h-64 md:h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                      <div className="text-center p-6">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center mx-auto mb-4">
+                          <span className="text-white text-2xl font-bold">AI</span>
+                        </div>
+                        <p className="text-sm text-gray-600">Featured Article</p>
+                      </div>
+                    </div>
+                  )}
                   <div className="p-6 sm:p-8 flex flex-col justify-center">
                     <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r from-[#004B78]/10 to-[#00A485]/10 text-[#004B78] w-fit mb-4">
                       {categoryLabels[featuredPost.category]}
@@ -182,18 +192,28 @@ export default function BlogPageClient() {
                     className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col"
                   >
                     {/* Post Image */}
-                    <div className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center mx-auto mb-2">
-                          <span className="text-white text-sm font-bold">
-                            {categoryLabels[post.category].charAt(0)}
-                          </span>
-                        </div>
-                        <p className="text-xs text-gray-500">
-                          {categoryLabels[post.category]}
-                        </p>
+                    {post.cardImage ? (
+                      <div className="w-full h-48 overflow-hidden">
+                        <img
+                          src={post.cardImage}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
                       </div>
-                    </div>
+                    ) : (
+                      <div className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#004B78] to-[#00A485] flex items-center justify-center mx-auto mb-2">
+                            <span className="text-white text-sm font-bold">
+                              {categoryLabels[post.category].charAt(0)}
+                            </span>
+                          </div>
+                          <p className="text-xs text-gray-500">
+                            {categoryLabels[post.category]}
+                          </p>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Post Content */}
                     <div className="p-6 flex flex-col flex-grow">

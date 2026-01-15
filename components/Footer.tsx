@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import {
   Facebook,
-  Twitter,
   Linkedin,
   Instagram,
   Mail,
@@ -15,31 +15,29 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const quickLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Case Studies', href: '#case-studies' },
-    { name: 'Team', href: '#team' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Process', href: '/#process' },
+    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'Team', href: '/team' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
   ]
 
+  // Service names mapped to their slugs
   const services = [
-    'Software Development',
-    'Web Development',
-    'AI Automation',
-    'App Development',
-    'UI/UX Design',
-    'Graphic Design',
-    'SEO Optimization',
-    'Cloud Services',
+    { name: 'Software Development', slug: 'software-development' },
+    { name: 'Web Development', slug: 'web-development' },
+    { name: 'AI Automation', slug: 'ai-automation' },
+    { name: 'App Development', slug: 'app-development' },
+    { name: 'UI/UX Design', slug: 'ui-ux-design' },
+    { name: 'Graphic Design', slug: 'graphic-design' },
   ]
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/people/Aurora-Nexus/61577659396600/?_rdc=1&_rdr#', label: 'Facebook' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/aurora-nexus-pvt-ltd', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/auroranexus.io/', label: 'Instagram' },
   ]
 
   return (
@@ -90,12 +88,12 @@ export default function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm sm:text-base text-gray-400 hover:text-[#00A485] transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -110,14 +108,14 @@ export default function Footer() {
           >
             <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Services</h4>
             <ul className="space-y-2 sm:space-y-3">
-              {services.slice(0, 6).map((service) => (
-                <li key={service}>
-                  <a
-                    href="#services"
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/${service.slug}`}
                     className="text-sm sm:text-base text-gray-400 hover:text-[#00A485] transition-colors"
                   >
-                    {service}
-                  </a>
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -135,26 +133,27 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 mt-1 flex-shrink-0" style={{ color: '#00A485' }} />
                 <a
-                  href="mailto:info@auroranexus.com"
+                  href="mailto:contact@auroranexus.io"
                   className="text-xs sm:text-sm text-gray-400 hover:text-[#00A485] transition-colors break-all"
                 >
-                  info@auroranexus.com
+                  contact@auroranexus.io
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 mt-1 flex-shrink-0" style={{ color: '#00A485' }} />
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+923408110022"
                   className="text-xs sm:text-sm text-gray-400 hover:text-[#00A485] transition-colors"
                 >
-                  +1 (234) 567-890
+                  +92 34 08 11 00 22
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mt-1 flex-shrink-0" style={{ color: '#00A485' }} />
-                <span className="text-xs sm:text-sm text-gray-400">
-                  123 Tech Street, Digital City, DC 12345
-                </span>
+                <div className="text-xs sm:text-sm text-gray-400">
+                  <p>Innovista Rawal, Avenue Mall, DHA-1, Rawalpindi</p>
+                  <p className="mt-1">102, MDR, Executive Block, Faisal Hills, Islamabad</p>
+                </div>
               </li>
             </ul>
           </motion.div>
